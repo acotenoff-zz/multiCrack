@@ -76,16 +76,16 @@ def matchPass(hashedPass, option):
 			print "[+] Found Password: " + word + "\n"
 			dictionary.close()
 			return True
-	print "[-] Password Not Found.\n"
 	dictionary.close
 	return False
 
+"""Checks all variations of sorting algorithms"""
 def checkAll(hashedPass):
 	found = False
 	for x in range(1,7):
-		tmp = str(x)
-		print  hashingAlg(tmp)
-		if (matchPass(hashedPass, tmp) == True):
+		opt = str(x)
+		if (matchPass(hashedPass, opt) == True):
+			print "Using: " + hashingAlg(opt) + "\n"
 			return True
 	return False
 
@@ -101,7 +101,8 @@ def main():
 			if (option == "7"):
 				checkAll(hashedPass)
 			else:
-				matchPass(hashedPass, option)
+				if (matchPass(hashedPass, option) == False):
+					print "[-] Password Not Found.\n"
 
 if __name__ == "__main__":
 	main()
